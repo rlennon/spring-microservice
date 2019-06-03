@@ -70,6 +70,13 @@ public class ArticleController{
         return new ResponseEntity<>(articleService.findAuthorArticles(authorId), HttpStatus.OK);
     }
 
+    // @PostMapping("/article")
+    // public ResponseEntity<?> createArticle(@RequestBody Long authorId){
+    //     return new ResponseEntity<>(articleService.findAuthorArticles(authorId), HttpStatus.OK);
+    // }
+
+    
+
 
 
     // @PostMapping("/students")
