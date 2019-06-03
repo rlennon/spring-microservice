@@ -3,6 +3,7 @@ package com.epharma.userservice.controller;
 import java.security.Principal;
 import java.util.List;
 
+import com.epharma.userservice.dto.StringResponse;
 import com.epharma.userservice.model.Role;
 import com.epharma.userservice.model.User;
 import com.epharma.userservice.service.SecurityService;
@@ -28,6 +29,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SecurityService securityService;
+
     @PostMapping("/service/registration")
     public ResponseEntity<?> register(@RequestBody User user) {
         if (userService.findByUsername(user.getUsername()) != null) {
@@ -38,7 +42,7 @@ public class UserController {
         user.setRole(Role.USER);
 
         userService.save(user);
-        SecurityService.autoLogin(user.getUsername(), user.getPassword());
+        securityService.autoLogin(user.getUsername(), user.getPassword());
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
     @GetMapping("/service/user")
