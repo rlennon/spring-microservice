@@ -47,10 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .logoutRequestMatcher(new AntPathRequestMatcher("/service/logout", "POST")).and()
             // login path
             .formLogin().loginPage("/service/user").and()
-            // configuring the session on the server
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
             // enable basic authentication
             .httpBasic().and()
+            // configuring the session on the server
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
             .csrf().disable();
     }
     @Bean

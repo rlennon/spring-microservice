@@ -29,22 +29,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private SecurityService securityService;
-
     @PostMapping("/service/registration")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody User user){
         if (userService.findByUsername(user.getUsername()) != null) {
             logger.error("username Already exist " + user.getUsername());
-            return new ResponseEntity(new StringResponse("user with username " + user.getUsername() + "already exist "),
+            return new ResponseEntity(
+                    new StringResponse("user with username " + user.getUsername() + "already exist "),
                     HttpStatus.CONFLICT);
         }
         user.setRole(Role.USER);
 
         userService.save(user);
-        securityService.autoLogin(user.getUsername(), user.getPassword());
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
+
     @GetMapping("/service/user")
     public ResponseEntity<?> user(Principal principal) {
         logger.debug("user logged "+principal);
@@ -63,10 +61,8 @@ public class UserController {
         return new ResponseEntity<User>(userService.findByUsername(principal.getName()), HttpStatus.OK);
     }
 
-
-    @RequestMapping(method = RequestMethod.POST,value = "/service/names")
-    public ResponseEntity<?> getUsers(@RequestBody List<Long> idList) {
-        return ResponseEntity.ok(userService.findUsers(idList));
-        
+    @RequestMapping(method = RequestMethod.POST, value = "/service/names")
+    public ResponseEntity<?> getUsers(@RequestBody List<Long> userIdList){
+        return ResponseEntity.ok(userService.findUsers(userIdList));
     }
 }
