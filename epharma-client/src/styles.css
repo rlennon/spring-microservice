@@ -1,3 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.box{
+    margin: 20px;
+
+}
+
+.small{
+    height: 30px;
+}
+
+.boxx{
+    border: 15px;
+    margin: 10px;
+}

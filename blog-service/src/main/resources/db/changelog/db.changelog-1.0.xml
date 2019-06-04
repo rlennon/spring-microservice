@@ -14,7 +14,7 @@
                 serial_number VARCHAR(255),
                 category VARCHAR(255),
                 status VARCHAR(255) NOT NULL,
-                create_date DATE,
+                create_date DATETIME NOT NULL,
                 CONSTRAINT PK_id PRIMARY KEY (id)
             );
         </sql>

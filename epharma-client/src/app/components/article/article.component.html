@@ -1,1 +1,27 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-md-12" bg-light >
+            <h2><b>Create New Article</b></h2>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+            <form [formGroup]="articleForm"  (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" class="container">
+                        <mat-label>Title</mat-label>
+                        <input matInput placeholder="Enter Title" formControlName = "articleTitle" required>
+                        <mat-hint>Enter title of Article</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="form-group" class="box" >
+                    <mat-label><h3><b>Content</b></h3></mat-label>
+                    <quill-editor formControlName="articleContent" [required]="true" >
 
+                    </quill-editor>
+                    <mat-hint>Please write post here you may use images, indenting etc....</mat-hint>
+                </div>
+                <div class="container" layout = 'row' layout-align='center center'>
+                    <button mat-raised-button  [disabled]="!articleForm.valid" color="primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

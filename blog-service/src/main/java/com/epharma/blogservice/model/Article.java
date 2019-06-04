@@ -1,5 +1,6 @@
 package com.epharma.blogservice.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class Article implements IModel{
     private String author;
 
     @Column(name = "create_date")
-    private Date createTime = new Date();
+    private LocalDateTime createTime;
 
     // @ManyToMany(fetch = FetchType.LAZY)
     // @JoinTable(name = "article_tag",

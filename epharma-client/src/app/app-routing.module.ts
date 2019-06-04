@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
+import { ViewComponent } from './components/view/view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,10 +13,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'article', component: ArticleComponent },
-  { path: 'article/:id', component: ArticleComponent },
-  { path: 'article-list', component: ArticleListComponent },
-  { path: "article-list/:id", component: ArticleListComponent },
-  { path: "article-list/:id/:text", component: ArticleListComponent } 
+  { path: 'article/:id', component: ViewComponent },
+  { path: 'home', component: ArticleListComponent },
+  // { path: "article-list/:id", component: ArticleListComponent },
+  // { path: "article-list/:id/:text", component: ArticleListComponent } 
 ];
 
 @NgModule({
