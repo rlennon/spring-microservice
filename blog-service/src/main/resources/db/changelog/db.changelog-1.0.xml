@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
   
-    <changeSet author="test" id="200320193">
+    <changeSet author="test" id="200320194">
         <sql>
             CREATE TABLE articles (
                 id BIGINT NOT NULL AUTO_INCREMENT,
@@ -11,10 +11,10 @@
                 author_id BIGINT NOT NULL,
                 author VARCHAR(255) NOT NULL,
                 content LONGBLOB NOT NULL,
-                serial_number VARCHAR(255),
-                category VARCHAR(255),
+                <!-- serial_number VARCHAR(255),
+                category VARCHAR(255), -->
                 status VARCHAR(255) NOT NULL,
-                create_date DATE,
+                create_date DATETIME NOT NULL,
                 CONSTRAINT PK_id PRIMARY KEY (id)
             );
         </sql>
@@ -22,7 +22,7 @@
             DROP TABLE articles;
         </rollback>
     </changeSet>
-    <changeSet id="200220197" author="test">
+    <!-- <changeSet id="200220197" author="test">
         <sql>
             CREATE TABLE comments (
                 id BIGINT NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,7 @@
         </sql>
         <rollback>
             DROP TABLE transaction;
-        </rollback>
+        </rollback> -->
     </changeSet>
  
  

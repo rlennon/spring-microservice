@@ -17,13 +17,13 @@ export class BlogService {
     return this.http.post(API_URL+'comment',JSON.stringify(comment) , {headers: { "Content-Type": "application/json; charset=UTF-8" }});
   }
 
+  createArticle(article:Article): Observable<any> {
+    return this.http.post(API_URL+'article',JSON.stringify(article) , {headers: { "Content-Type": "application/json; charset=UTF-8" }});
+  }
+
   filterArticlesByAuthor(userId:string): Observable<any> {
     return this.http.post(API_URL+'user',userId , {headers: { "Content-Type": "application/json; charset=UTF-8" }});
   }
-
-  // filterStudents(courseId:string): Observable<any> {
-  //   return this.http.post(API_URL+'students',courseId , {headers: { "Content-Type": "application/json; charset=UTF-8" }});
-  // }
 
   allArticles(): Observable<any> {
     return this.http.post(API_URL , {headers: { "Content-Type": "application/json; charset=UTF-8" }});

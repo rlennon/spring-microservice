@@ -1,12 +1,15 @@
 package com.epharma.blogservice.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import com.epharma.blogservice.intercomm.LogClient;
 import com.epharma.blogservice.intercomm.UserClient;
+import com.epharma.blogservice.model.Article;
 import com.epharma.blogservice.model.Comment;
+import com.epharma.blogservice.model.Status;
 import com.epharma.blogservice.service.ArticleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,25 +73,11 @@ public class ArticleController{
         return new ResponseEntity<>(articleService.findAuthorArticles(authorId), HttpStatus.OK);
     }
 
-    // @PostMapping("/article")
-    // public ResponseEntity<?> createArticle(@RequestBody Long authorId){
-    //     return new ResponseEntity<>(articleService.findAuthorArticles(authorId), HttpStatus.OK);
-    // }
-
-    
-
-
-
-    // @PostMapping("/students")
-    // public ResponseEntity<?> findCourseStudents(@RequestBody Long courseId){
-    //     List<Transaction> list = courseService.filterTransactionsOfCourse(courseId);
-    //     if(list!=null && !list.isEmpty()){
-    //         List<Long> userIdList = list.parallelStream().map(t->t.getUserId()).collect(Collectors.toList());
-    //         List<String> students = userClient.getUsers(userIdList);
-    //         return ResponseEntity.ok(students);
-    //     }
-    //     return ResponseEntity.notFound().build();
-    // }
-
-
+    @PostMapping("/article")
+    public ResponseEntity<?> saveArticle(@RequestBody Article article){
+        article.setCreateTime(LocalDateTime.now());
+        article.setStatus(Status.VERIFIED);
+        articleService.saveArticle(article);
+        return ResponseEntity.ok(article);
+    }
 }

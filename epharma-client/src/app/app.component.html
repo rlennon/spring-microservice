@@ -28,9 +28,11 @@
       <li class="nav-item"><a class="nav-link" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right" *ngIf="currentUser">
+        <li class="nav-item"><a class="nav-link" href="/article"><span class="glyphicon glyphicon-file"></span> New Article</a></li>
       <li class="nav-item"><a class="nav-link" href="/profile"><span class="glyphicon glyphicon-user"></span> {{currentUser.name}}</a></li>
       <li class="nav-item"><a class="nav-link" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
+
