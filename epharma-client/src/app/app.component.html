@@ -6,22 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <!-- <li class="nav-item custom-nav-item">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" (click)="searchPopular()">Popular</a>
-              <div role="separator" class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="searchAll()">All</a>
-            </div>
-          </div>
-          <input type="text" class="form-control col-12" name="x" placeholder="Search term..." [(ngModel)]="searchText" (keyup.enter)="search()">
-          <div class="input-group-append">
-              <button class="btn btn-secondary" type="button" (click)="search()"><span class="glyphicon glyphicon-search"></span></button>
-          </div>
-        </div>
-      </li> -->
+        <li class="nav-item"><a class="nav-link" href="/home"><span class="glyphicon glyphicon-user"></span>Home</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right" *ngIf="!currentUser">
       <li class="nav-item"><a class="nav-link" href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

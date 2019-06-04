@@ -1,8 +1,8 @@
 export class Article {
-    id : string;
+    id : number;
     title: string="";
     content: String="";
-    authorId: String="";
+    authorId: number;
     status: any;
     author: string="";
     createTime: any;

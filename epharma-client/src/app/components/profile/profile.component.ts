@@ -13,12 +13,6 @@ import {BlogService} from "../../services/blog.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  displayedColumns: string[] = ['title', 'author', 'category', 'date'];
-  dataSource: MatTableDataSource<Article> = new MatTableDataSource();
-  @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
-  @ViewChild(MatSort,{static:false}) sort: MatSort;
-
   currentUser: User;
   constructor(public authService: AuthService, public router: Router, private blogService: BlogService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -28,18 +22,6 @@ export class ProfileComponent implements OnInit {
     if(!this.currentUser){
       return;
     }
-    this.blogService.filterArticlesByAuthor(this.currentUser.id).subscribe(data => {
-      this.dataSource.data = data;
-    });
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

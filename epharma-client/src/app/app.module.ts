@@ -18,6 +18,7 @@ MatFormFieldModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgre
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ViewComponent } from './components/view/view.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     ProfileComponent,
     ArticleComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
