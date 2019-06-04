@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   logIn(user: User): Observable<any> {
-    console.log(user);
+    // console.log(user);
     const headers = new HttpHeaders(user ? {
             authorization : 'Basic ' + btoa(user.username + ':' + user.password)
         } : {});
@@ -33,6 +33,7 @@ createAccount(user:User): Observable<any> {
 }
 
 logOut(): Observable<any>  {
+  console.log(API_URL+"logout");
   return this.http.post(API_URL+"logout",{})
     .pipe(map(response => {
         localStorage.removeItem('currentUser');

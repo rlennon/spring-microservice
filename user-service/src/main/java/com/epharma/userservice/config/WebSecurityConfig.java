@@ -42,7 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .anyRequest().fullyAuthenticated()
             .and()
             // invalidate session with validate 
-            .logout().permitAll()
+            .logout()
+            .permitAll()
             // logout path and type of request
             .logoutRequestMatcher(new AntPathRequestMatcher("/service/logout", "POST")).and()
             // login path
