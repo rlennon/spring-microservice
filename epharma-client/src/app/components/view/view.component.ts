@@ -23,7 +23,7 @@ export class ViewComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       if(params.has('id')){
         this.articleId = params.get('id');
-      }});for
+      }});
 
         this.blogService.allArticles()
         .subscribe(data=>{
