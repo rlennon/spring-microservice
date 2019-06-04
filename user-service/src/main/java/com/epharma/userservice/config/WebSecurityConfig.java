@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,13 +42,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .anyRequest().fullyAuthenticated()
             .and()
             // invalidate session with validate 
-            .logout().permitAll()
+            .logout()
+            .permitAll()
             // logout path and type of request
-            .logoutRequestMatcher(new AntPathRequestMatcher("/api/user/service/logout", "POST")).and()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/service/logout", "POST")).and()
             // login path
-            .formLogin().loginPage("/api/user/service/user").and()
+            .formLogin().loginPage("/service/user").and()
             // enable basic authentication
             .httpBasic().and()
+            // configuring the session on the server
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
             .csrf().disable();
     }
     @Bean
@@ -59,6 +63,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+    @Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	}
     
     @Bean
     public WebMvcConfigurer corsConfigurer(){
